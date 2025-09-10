@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
   return (
     <div className="login-container" onKeyDown={handleKeyPress}>
-      <h2 className="login-title">로그인 화면</h2>
+      <h2 className="login-title">로그인 비비화면</h2>
       <input
         className="login-input"
         type="text"
