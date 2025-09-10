@@ -1,7 +1,7 @@
 /* 앱 전체 레이아웃 */
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
   padding: 20px 20px 80px 20px; /* 하단 탭을 위한 여백 조정 */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -16,20 +16,14 @@
 .app-title {
   font-size: 3rem;
   font-weight: 800;
-  color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #2d3748;
   margin-bottom: 10px;
-  background: linear-gradient(45deg, #fff, #f0f0f0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .app-subtitle {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: #5a67d8;
+  font-weight: 400;
 }
 
 /* 메인 콘텐츠 - 달력 중심 레이아웃 */
@@ -52,32 +46,19 @@
 /* 달력 섹션 - 메인 영역 */
 .calendar-main-section {
   grid-column: 1;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
   min-height: 500px;
-}
-
-.calendar-main-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-  border-radius: 24px 24px 0 0;
 }
 
 .calendar-main-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.5);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
 }
 
 .calendar-main-title {
@@ -112,32 +93,19 @@
 
 /* 앱 섹션 */
 .app-section {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
   padding: 25px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-}
-
-.app-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-  border-radius: 20px 20px 0 0;
 }
 
 .app-section:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px 0 rgba(31, 38, 135, 0.5);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* 섹션 제목 */

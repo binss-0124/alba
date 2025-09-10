@@ -3,9 +3,9 @@
 }
 
 .work-detail-section {
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .work-detail-section:last-of-type {
@@ -14,39 +14,35 @@
 }
 
 .section-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #666;
-  margin: 0 0 8px 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6c757d;
+  margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .section-content {
-  font-size: 16px;
-  color: #333;
+  font-size: 1.1rem;
+  color: #212529;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .section-content.salary {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #4caf50;
+  color: #70e0a4;
 }
 
 .work-detail-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
 }
 
-.edit-button {
-  flex: 1;
-}
-
-.delete-button {
+.work-detail-actions .button {
   flex: 1;
 }
