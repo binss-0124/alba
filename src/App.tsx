@@ -10,6 +10,8 @@ import { PostList } from './components/community/PostList';
 import { TabNavigation, TabItem } from './components/common/TabNavigation';
 import { QuickStats } from './components/common/QuickStats';
 import { ActionButtons } from './components/common/ActionButtons';
+import TodaysSchedule from './components/main/TodaysSchedule';
+import CommunityPreview from './components/main/CommunityPreview';
 
 // 임시 데이터
 const mockWorkRecords = [
@@ -159,28 +161,53 @@ function App() {
                 onDateClick={handleDateSelect}
               />
             </section>
-            <aside className="sidebar-section">
-              <QuickStats 
-                title="이번 달 근무 요약"
-                stats={[
-                  { label: '총 근무일', value: 22, unit: '일', icon: '📅', color: '#667eea' },
-                  { label: '총 근무시간', value: 176, unit: '시간', icon: '⏰', color: '#48bb78' },
-                  { label: '예상 급여', value: 1760000, unit: '원', icon: '💰', color: '#ed8936' },
-                  { label: '평균 근무시간', value: 8, unit: '시간', icon: '📊', color: '#9f7aea' }
-                ]}
-                variant="success"
+
+            <section className="app-section">
+              <h2 className="section-title">오늘의 근무 일정</h2>
+              <TodaysSchedule
+                date="2025년 9월 10일 (수)"
+                schedule="09:00 - 18:00"
+                location="강남점"
+                status="근무 예정"
               />
-              <ActionButtons 
-                title="빠른 액션"
-                actions={[
-                  { label: '출근', icon: '🟢', onClick: () => handleClockIn('현재 위치'), variant: 'success' },
-                  { label: '퇴근', icon: '🔴', onClick: handleClockOut, variant: 'danger' },
-                  { label: '휴가신청', icon: '🏖️', onClick: () => console.log('휴가신청'), variant: 'warning' },
-                  { label: '긴급연락', icon: '🚨', onClick: () => console.log('긴급연락'), variant: 'danger' }
-                ]}
-                layout="grid"
+            </section>
+
+            <div className="calendar-widgets-grid">
+              <section className="app-section">
+                <h2 className="section-title">이번 달 누적 근무</h2>
+                <QuickStats 
+                  title="이번 달 근무 요약"
+                  stats={[
+                    { label: '총 근무일', value: 22, unit: '일', icon: '📅', color: '#667eea' },
+                    { label: '총 근무시간', value: 176, unit: '시간', icon: '⏰', color: '#48bb78' },
+                    { label: '예상 급여', value: 1760000, unit: '원', icon: '💰', color: '#ed8936' },
+                    { label: '평균 근무시간', value: 8, unit: '시간', icon: '📊', color: '#9f7aea' }
+                  ]}
+                  variant="success"
+                />
+              </section>
+              <section className="app-section">
+                <h2 className="section-title">빠른 액션</h2>
+                <ActionButtons 
+                  title="빠른 액션"
+                  actions={[
+                    { label: '출근', icon: '🟢', onClick: () => handleClockIn('현재 위치'), variant: 'success' },
+                    { label: '퇴근', icon: '🔴', onClick: handleClockOut, variant: 'danger' },
+                    { label: '휴가신청', icon: '🏖️', onClick: () => console.log('휴가신청'), variant: 'warning' },
+                    { label: '긴급연락', icon: '🚨', onClick: () => console.log('긴급연락'), variant: 'danger' }
+                  ]}
+                  layout="grid"
+                />
+              </section>
+            </div>
+
+            <section className="app-section">
+              <h2 className="section-title">최근 커뮤니티 소식</h2>
+              <CommunityPreview
+                posts={mockPosts.slice(0, 3)} // Show top 3 posts
+                onPostClick={handlePostClick}
               />
-            </aside>
+            </section>
           </div>
         );
       

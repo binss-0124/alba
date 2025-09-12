@@ -1,0 +1,59 @@
+.todays-schedule {
+  /* This component will be wrapped in an .app-section, so it doesn't need its own card styles */
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.schedule-date {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.schedule-status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.schedule-status.scheduled {
+  background-color: #e7f0ff; /* Light pastel blue */
+  color: #a0c4ff;
+}
+
+.schedule-status.in-progress {
+  background-color: #fffbe6; /* Light pastel yellow */
+  color: #f59f00;
+}
+
+.schedule-status.no-work {
+  background-color: #f1f3f5; /* Lighter gray */
+  color: #6c757d;
+}
+
+.schedule-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.schedule-item {
+  font-size: 1rem;
+  color: #212529;
+  margin: 0;
+}
+
+.schedule-item strong {
+  color: #6c757d;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}

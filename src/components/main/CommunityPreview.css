@@ -1,0 +1,59 @@
+.community-preview {
+  /* This component will be wrapped in an .app-section, so it doesn't need its own card styles */
+}
+
+.no-posts {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6c757d;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.post-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.post-item:hover {
+  border-color: #a0c4ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.post-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212529;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.post-author {
+  font-weight: 500;
+  color: #212529;
+}
+
+.post-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
