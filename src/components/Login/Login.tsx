@@ -3,9 +3,10 @@ import './Login.css';
 
 interface LoginProps {
   onLoginSuccess: (name: string, type: 'admin' | 'user') => void;
+  onGoToSignUp: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
+const Login: React.FC<LoginProps> = ({ onLoginSuccess, onGoToSignUp }) => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState<'admin' | 'user'>('user');
@@ -22,7 +23,11 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
   return (
     <div className="login-container" onKeyDown={handleKeyPress}>
-      <h2 className="login-title">로그인 비비화면</h2>
+      <div className="coin-wrapper">
+        <span className="coin-text">1억</span>
+        <span className="coin-emoji">💰</span>
+      </div>
+      <h2 className="login-title">로그인 화면</h2>
       <input
         className="login-input"
         type="text"
@@ -54,12 +59,16 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             checked={userType === 'admin'}
             onChange={() => setUserType('admin')}
           />
+          
           관리자
         </label>
       </div>
       <button className="login-button" onClick={handleLogin}>
         로그인
       </button>
+      <p className="signup-link">
+        계정이 없으신가요? <button onClick={onGoToSignUp} className="link-button">회원가입</button>
+      </p>
     </div>
   );
 };

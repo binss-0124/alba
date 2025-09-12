@@ -11,6 +11,7 @@ import { TabNavigation, TabItem } from './components/common/TabNavigation';
 import { QuickStats } from './components/common/QuickStats';
 import { ActionButtons } from './components/common/ActionButtons';
 import Login from './components/Login/Login'; // Login import
+import SignUp from './components/Login/SignUp';
 
 
 
@@ -91,6 +92,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('calendar');
   const [tabList, setTabList] = useState(tabs);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
   const [userName, setUserName] = useState('');
   const [userType, setUserType] = useState<'admin' | 'user' | null>(null);
 
@@ -98,6 +100,14 @@ const handleLoginSuccess = (name: string, type: 'admin' | 'user') => {
     setUserName(name);
     setUserType(type);
     setIsLoggedIn(true);
+  };
+
+  const handleGoToSignUp = () => {
+    setShowSignUp(true);
+  };
+
+  const handleSignUpSuccess = () => {
+    setShowSignUp(false);
   };
 
   const handleDateSelect = (date: string) => {
@@ -365,44 +375,46 @@ const handleLoginSuccess = (name: string, type: 'admin' | 'user') => {
     }
   };
 
-return (
-  <div className="app">
-  {isLoggedIn ? (
-    <>
-      <header className="app-header">
-        <h1 className="app-title">알바 어플</h1>
-        <p className="app-subtitle">
-          {userType === 'admin' ? '관리자 모드' : `${userName}님 환영합니다!`}
-        </p>
-        <button
-          className="logout-button"
-          onClick={() => {
-            setIsLoggedIn(false);
-            setUserName('');
-            setUserType(null);
-          }}
-        >
-          로그아웃
-        </button>
-      </header>
-      
-      <main>
-        {userType === 'admin' ? (
-          <h2>관리자 페이지 (기능 확장 가능)</h2>
-        ) : (
-          renderCurrentScreen()  // ← 여기에서 기존 일반 사용자 화면 호출
-        )}
-      </main>
+  return (
+    <div className="app">
+      {isLoggedIn ? (
+        <>
+          <header className="app-header">
+            <h1 className="app-title">알바 어플</h1>
+            <p className="app-subtitle">
+              {userType === 'admin' ? '관리자 모드' : `${userName}님 환영합니다!`}
+            </p>
+            <button
+              className="logout-button"
+              onClick={() => {
+                setIsLoggedIn(false);
+                setUserName('');
+                setUserType(null);
+              }}
+            >
+              로그아웃
+            </button>
+          </header>
+          
+          <main>
+            {userType === 'admin' ? (
+              <h2>관리자 페이지 (기능 확장 가능)</h2>
+            ) : (
+              renderCurrentScreen()  // ← 여기에서 기존 일반 사용자 화면 호출
+            )}
+          </main>
 
-      {userType === 'user' && (
-        <TabNavigation tabs={tabList} onTabChange={handleTabChange} />
+          {userType === 'user' && (
+            <TabNavigation tabs={tabList} onTabChange={handleTabChange} />
+          )}
+        </>
+      ) : showSignUp ? (
+        <SignUp onSignUpSuccess={handleSignUpSuccess} />
+      ) : (
+        <Login onLoginSuccess={handleLoginSuccess} onGoToSignUp={handleGoToSignUp} />
       )}
-    </>
-  ) : (
-    <Login onLoginSuccess={handleLoginSuccess} />
-  )}
-  </div>
-);
+    </div>
+  );
 }
 
 export default App;
