@@ -380,20 +380,10 @@ const handleLoginSuccess = (name: string, type: 'admin' | 'user') => {
       {isLoggedIn ? (
         <>
           <header className="app-header">
-            <h1 className="app-title">알바 어플</h1>
+            <h1 className="app-title"></h1>
             <p className="app-subtitle">
-              {userType === 'admin' ? '관리자 모드' : `${userName}님 환영합니다!`}
+              {userType === 'admin' ? '관리자 모드' : `${userName}`}
             </p>
-            <button
-              className="logout-button"
-              onClick={() => {
-                setIsLoggedIn(false);
-                setUserName('');
-                setUserType(null);
-              }}
-            >
-              로그아웃
-            </button>
           </header>
           
           <main>
@@ -416,5 +406,6 @@ const handleLoginSuccess = (name: string, type: 'admin' | 'user') => {
     </div>
   );
 }
+
 
 export default App;

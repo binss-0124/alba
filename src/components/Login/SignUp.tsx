@@ -75,7 +75,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSignUpSuccess }) => {
           onChange={(e) => setBirthday(e.target.value)}
         />
 
-        <label className="signup-label">주민등록번호 뒷자리</label>
+        <label className="signup-label">주민등록번호 앞자리</label>
         <input
           className="signup-input"
           type="text"
