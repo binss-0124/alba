@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; //%%수정됨
 
 const PRIMARY_COLOR = '#D1C4E9'; // Pastel primary color
 const BACKGROUND_COLOR = '#E0F2F7'; // Very light pastel blue background
@@ -16,8 +17,10 @@ const DUMMY_POSTS = [
 ];
 
 const CommunityScreen = () => {
+  const navigation = useNavigation(); //%%수정됨
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.postCard}>
+    <TouchableOpacity style={styles.postCard} onPress={() => navigation.navigate('PostDetail', { post: item })}> //%%수정됨
       <Text style={styles.postTitle}>{item.title}</Text>
       <View style={styles.postMeta}>
         <Text style={styles.postAuthor}>{item.author}</Text>
@@ -34,6 +37,12 @@ const CommunityScreen = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
       />
+      <TouchableOpacity
+        style={styles.writeButton} //%%수정됨
+        onPress={() => navigation.navigate('CreatePost')} //%%수정됨
+      >
+        <Text style={styles.writeButtonText}>글쓰기</Text> //%%수정됨
+      </TouchableOpacity>
     </View>
   );
 };
@@ -80,6 +89,27 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#a0a0a0',
   },
+  writeButton: { //%%수정됨
+    position: 'absolute', //%%수정됨
+    bottom: 20, //%%수정됨
+    right: 20, //%%수정됨
+    backgroundColor: PRIMARY_COLOR, //%%수정됨
+    width: 60, //%%수정됨
+    height: 60, //%%수정됨
+    borderRadius: 30, //%%수정됨
+    justifyContent: 'center', //%%수정됨
+    alignItems: 'center', //%%수정됨
+    elevation: 5, //%%수정됨
+    shadowColor: '#000', //%%수정됨
+    shadowOffset: { width: 0, height: 2 }, //%%수정됨
+    shadowOpacity: 0.25, //%%수정됨
+    shadowRadius: 3.84, //%%수정됨
+  }, //%%수정됨
+  writeButtonText: { //%%수정됨
+    color: 'white', //%%수정됨
+    fontSize: 16, //%%수정됨
+    fontWeight: 'bold', //%%수정됨
+  }, //%%수정됨
 });
 
 export default CommunityScreen;
