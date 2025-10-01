@@ -16,9 +16,10 @@ const RegisterEmployeeScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [branchCode, setBranchCode] = useState(''); //%%수정됨
 
   const handleRegister = async () => {
-    if (!name || !email || !password || !confirmPassword || !phoneNumber) {
+    if (!name || !email || !password || !confirmPassword || !phoneNumber || !branchCode) { //%%수정됨
       Alert.alert('입력 오류', '모든 필드를 입력해주세요.');
       return;
     }
@@ -39,19 +40,19 @@ const RegisterEmployeeScreen = ({ navigation }) => {
     }
 
     if (user) {
-      // Insert into employees table
+      // Insert into employees table with pending status
       const { error: employeeInsertError } = await supabase
         .from('employees')
-        .insert([{ user_id: user.id, name: name, phone_number: phoneNumber }]);
+        .insert([{ user_id: user.id, name: name, phone_number: phoneNumber, branch_code: branchCode, status: 'pending' }]); //%%수정됨
 
       if (employeeInsertError) {
-        console.log('Supabase employee insert error:', employeeInsertError); //%%수정됨
-        Alert.alert('알바생 정보 저장 오류', employeeInsertError.message); //%%수정됨
+        console.log('Supabase employee insert error:', employeeInsertError);
+        Alert.alert('알바생 정보 저장 오류', employeeInsertError.message);
         return;
       }
 
-      Alert.alert('회원가입 성공', '회원가입이 완료되었습니다. 로그인해주세요.');
-      navigation.navigate('Login');
+      Alert.alert('회원가입 요청 완료', '고용주의 승인을 기다려주세요.'); //%%수정됨
+      navigation.navigate('LoginEmployee');
     }
   };
 
@@ -97,6 +98,13 @@ const RegisterEmployeeScreen = ({ navigation }) => {
         value={phoneNumber}
         onChangeText={setPhoneNumber}
         keyboardType="phone-pad"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="지점 번호"
+        placeholderTextColor="#999"
+        value={branchCode}
+        onChangeText={setBranchCode}
       />
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>회원가입</Text>

@@ -16,9 +16,10 @@ const RegisterEmployerScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [branchCode, setBranchCode] = useState(''); //%%수정됨
 
   const handleRegister = async () => {
-    if (!companyName || !email || !password || !confirmPassword || !phoneNumber) {
+    if (!companyName || !email || !password || !confirmPassword || !phoneNumber || !branchCode) { //%%수정됨
       Alert.alert('입력 오류', '모든 필드를 입력해주세요.');
       return;
     }
@@ -42,7 +43,7 @@ const RegisterEmployerScreen = ({ navigation }) => {
       // Insert into employers table
       const { error: employerInsertError } = await supabase
         .from('employers')
-        .insert([{ user_id: user.id, company_name: companyName, phone_number: phoneNumber }]);
+        .insert([{ user_id: user.id, company_name: companyName, phone_number: phoneNumber, branch_code: branchCode }]); //%%수정됨
 
       if (employerInsertError) {
         console.log('Supabase employer insert error:', employerInsertError);
@@ -51,7 +52,7 @@ const RegisterEmployerScreen = ({ navigation }) => {
       }
 
       Alert.alert('회원가입 성공', '회원가입이 완료되었습니다. 로그인해주세요.');
-      navigation.navigate('Login');
+      navigation.navigate('LoginEmployer');
     }
   };
 
@@ -97,6 +98,13 @@ const RegisterEmployerScreen = ({ navigation }) => {
         value={phoneNumber}
         onChangeText={setPhoneNumber}
         keyboardType="phone-pad"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="지점 번호"
+        placeholderTextColor="#999"
+        value={branchCode}
+        onChangeText={setBranchCode}
       />
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>회원가입</Text>

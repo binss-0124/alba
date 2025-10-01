@@ -28,7 +28,27 @@ const LoginEmployeeScreen = ({ navigation }) => {
       console.log('Supabase signIn error:', error);
       Alert.alert('로그인 오류', error.message);
     } else if (data.user) {
-      navigation.replace('Main');
+      const { data: employee, error: employeeError } = await supabase
+        .from('employees')
+        .select('status')
+        .eq('user_id', data.user.id)
+        .single();
+
+      if (employeeError) {
+        console.log('Supabase employee fetch error:', employeeError);
+        Alert.alert('오류', '직원 정보를 불러오는데 실패했습니다.');
+        return;
+      }
+
+      if (employee.status === 'pending') {
+        Alert.alert('승인 대기', '고용주의 승인을 기다려주세요.');
+        supabase.auth.signOut();
+      } else if (employee.status === 'approved') {
+        navigation.replace('Main');
+      } else {
+        Alert.alert('오류', '알 수 없는 직원 상태입니다.');
+        supabase.auth.signOut();
+      }
     }
   };
 
