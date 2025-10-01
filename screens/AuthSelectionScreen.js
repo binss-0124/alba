@@ -8,13 +8,13 @@ const AuthSelectionScreen = ({ navigation }) => {
       <Text style={styles.subtitle}>어떤 유형으로 로그인/회원가입 하시겠어요?</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => navigation.navigate('LoginEmployee')}
       >
         <Text style={styles.buttonText}>알바생</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, styles.employerButton]}
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => navigation.navigate('LoginEmployer')}
       >
         <Text style={styles.buttonText}>고용주</Text>
       </TouchableOpacity>

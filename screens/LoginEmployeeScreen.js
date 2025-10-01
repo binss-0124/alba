@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { supabase } from '../supabase';
 
-const LoginScreen = ({ navigation }) => {
+const LoginEmployeeScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,57 +28,13 @@ const LoginScreen = ({ navigation }) => {
       console.log('Supabase signIn error:', error);
       Alert.alert('로그인 오류', error.message);
     } else if (data.user) {
-      let userType = null;
-
-      // Check in employees table
-      const { data: employeeData, error: employeeError } = await supabase
-        .from('employees')
-        .select('user_id')
-        .eq('user_id', data.user.id)
-        .single();
-
-      if (employeeError && employeeError.code !== 'PGRST116') { // PGRST116 means no rows found
-        console.log('Supabase employee data fetch error:', employeeError);
-        Alert.alert('사용자 정보 조회 오류', employeeError.message);
-        return;
-      }
-
-      if (employeeData) {
-        userType = 'employee';
-      }
-
-      // If not employee, check in employers table
-      if (!userType) {
-        const { data: employerData, error: employerError } = await supabase
-          .from('employers')
-          .select('user_id')
-          .eq('user_id', data.user.id)
-          .single();
-
-        if (employerError && employerError.code !== 'PGRST116') { // PGRST116 means no rows found
-          console.log('Supabase employer data fetch error:', employerError);
-          Alert.alert('사용자 정보 조회 오류', employerError.message);
-          return;
-        }
-
-        if (employerData) {
-          userType = 'employer';
-        }
-      }
-
-      if (userType) {
-        Alert.alert('로그인 성공', `환영합니다! 당신은 ${userType}입니다.`);
-        // You can use userType here to navigate to different main screens
-        navigation.replace('Main'); // 로그인 성공 시 메인 화면으로 이동
-      } else {
-        Alert.alert('로그인 오류', '사용자 유형을 찾을 수 없습니다.');
-      }
+      navigation.replace('Main');
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>로그인</Text>
+      <Text style={styles.title}>근로자 로그인</Text>
       <TextInput
         style={styles.input}
         placeholder="이메일"
@@ -161,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default LoginEmployeeScreen;
