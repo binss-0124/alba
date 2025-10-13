@@ -10,15 +10,34 @@ import {
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('employee'); // or 'employer'
 
   const handleLogin = () => {
-    // For now, just navigate to the main app screen
-    navigation.replace('Main');
+    // For now, just navigate to the main app screen based on user type
+    if (userType === 'employer') {
+      navigation.replace('EmployerHome');
+    } else {
+      navigation.replace('Main');
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>로그인</Text>
+      <View style={styles.userTypeContainer}>
+        <TouchableOpacity
+          style={[styles.userTypeButton, userType === 'employee' && styles.userTypeButtonActive]}
+          onPress={() => setUserType('employee')}
+        >
+          <Text style={[styles.userTypeButtonText, userType === 'employee' && styles.userTypeButtonTextActive]}>알바생</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.userTypeButton, userType === 'employer' && styles.userTypeButtonActive]}
+          onPress={() => setUserType('employer')}
+        >
+          <Text style={[styles.userTypeButtonText, userType === 'employer' && styles.userTypeButtonTextActive]}>사장님</Text>
+        </TouchableOpacity>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="이메일"
@@ -64,6 +83,30 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 40,
+  },
+  userTypeContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    backgroundColor: '#E0E0E0',
+    borderRadius: 25,
+    width: '100%',
+  },
+  userTypeButton: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 25,
+    alignItems: 'center',
+  },
+  userTypeButtonActive: {
+    backgroundColor: '#4A90E2',
+  },
+  userTypeButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#666',
+  },
+  userTypeButtonTextActive: {
+    color: '#fff',
   },
   input: {
     width: '100%',

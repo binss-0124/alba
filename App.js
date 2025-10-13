@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './navigation/TabNavigator';
+import EmployerTabNavigator from './navigation/EmployerTabNavigator';
 import SplashScreen from './screens/SplashScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="RegisterEmployee" component={RegisterEmployeeScreen} />
         <Stack.Screen name="RegisterEmployer" component={RegisterEmployerScreen} />
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="EmployerHome" component={EmployerTabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
