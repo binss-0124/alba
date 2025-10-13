@@ -109,7 +109,7 @@ const RegisterEmployerScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>회원가입</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity onPress={() => {navigation.navigate('LoginEmployer'); /*%%수정됨*/}}>
         <Text style={styles.linkText}>이미 계정이 있으신가요? 로그인</Text>
       </TouchableOpacity>
     </ScrollView>
