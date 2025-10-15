@@ -11,7 +11,11 @@ const SplashScreen = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
+<<<<<<< HEAD
           onPress={() => {navigation.navigate('AuthSelection'); /*%%수정됨*/}}
+=======
+          onPress={() => navigation.navigate('Login')}
+>>>>>>> hoon
         >
           <Text style={styles.buttonText}>로그인</Text>
         </TouchableOpacity>

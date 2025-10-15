@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+=======
+
+import React from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+>>>>>>> hoon
 
 const PRIMARY_COLOR = '#D1C4E9'; // Pastel primary color
 const BACKGROUND_COLOR = '#E0F2F7'; // Very light pastel blue background
@@ -16,10 +22,15 @@ const DUMMY_POSTS = [
 ];
 
 const CommunityScreen = () => {
+<<<<<<< HEAD
   const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.postCard} onPress={() => navigation.navigate('PostDetail', { post: item })}>
+=======
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.postCard}>
+>>>>>>> hoon
       <Text style={styles.postTitle}>{item.title}</Text>
       <View style={styles.postMeta}>
         <Text style={styles.postAuthor}>{item.author}</Text>
@@ -36,12 +47,15 @@ const CommunityScreen = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
       />
+<<<<<<< HEAD
       <TouchableOpacity
         style={styles.writeButton}
         onPress={() => navigation.navigate('CreatePost')}
       >
         <Text style={styles.writeButtonText}>글쓰기</Text>
       </TouchableOpacity>
+=======
+>>>>>>> hoon
     </View>
   );
 };
@@ -88,6 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#a0a0a0',
   },
+<<<<<<< HEAD
   writeButton: {
     position: 'absolute',
     bottom: 20,
@@ -112,3 +127,8 @@ const styles = StyleSheet.create({
 });
 
 export default CommunityScreen;
+=======
+});
+
+export default CommunityScreen;
+>>>>>>> hoon

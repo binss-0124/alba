@@ -6,15 +6,20 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+<<<<<<< HEAD
   Alert,
 } from 'react-native';
 import { supabase } from '../supabase';
+=======
+} from 'react-native';
+>>>>>>> hoon
 
 const RegisterEmployerScreen = ({ navigation }) => {
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+<<<<<<< HEAD
   const [phoneNumber, setPhoneNumber] = useState('');
   const [branchCode, setBranchCode] = useState(''); //%%수정됨
 
@@ -54,6 +59,17 @@ const RegisterEmployerScreen = ({ navigation }) => {
       Alert.alert('회원가입 성공', '회원가입이 완료되었습니다. 로그인해주세요.');
       navigation.navigate('LoginEmployer');
     }
+=======
+
+  const handleRegister = () => {
+    if (password !== confirmPassword) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+    // Handle employer registration logic here
+    // For now, just navigate to the login screen
+    navigation.navigate('Login');
+>>>>>>> hoon
   };
 
   return (
@@ -91,6 +107,7 @@ const RegisterEmployerScreen = ({ navigation }) => {
         onChangeText={setConfirmPassword}
         secureTextEntry
       />
+<<<<<<< HEAD
       <TextInput
         style={styles.input}
         placeholder="전화번호"
@@ -110,6 +127,12 @@ const RegisterEmployerScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>회원가입</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => {navigation.navigate('LoginEmployer'); /*%%수정됨*/}}>
+=======
+      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <Text style={styles.buttonText}>회원가입</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+>>>>>>> hoon
         <Text style={styles.linkText}>이미 계정이 있으신가요? 로그인</Text>
       </TouchableOpacity>
     </ScrollView>

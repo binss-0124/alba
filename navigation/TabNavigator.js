@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+=======
+
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+>>>>>>> hoon
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import PayScreen from '../screens/PayScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+<<<<<<< HEAD
 import PostDetailScreen from '../screens/PostDetailScreen';
 import CreatePostScreen from '../screens/CreatePostScreen';
 
@@ -22,6 +29,10 @@ function CommunityStackScreen() {
     </CommunityStack.Navigator>
   );
 }
+=======
+
+const Tab = createBottomTabNavigator();
+>>>>>>> hoon
 
 const TabNavigator = () => {
   return (
@@ -34,8 +45,11 @@ const TabNavigator = () => {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === '급여') {
             iconName = focused ? 'wallet' : 'wallet-outline';
+<<<<<<< HEAD
           } else if (route.name === '커뮤니티') {
             iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
+=======
+>>>>>>> hoon
           } else if (route.name === '프로필') {
             iconName = focused ? 'person' : 'person-outline';
           }
@@ -49,10 +63,17 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="홈" component={HomeScreen} />
       <Tab.Screen name="급여" component={PayScreen} />
+<<<<<<< HEAD
       <Tab.Screen name="커뮤니티" component={CommunityStackScreen} options={{ headerShown: false }} />
+=======
+>>>>>>> hoon
       <Tab.Screen name="프로필" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
 
+<<<<<<< HEAD
 export default TabNavigator;
+=======
+export default TabNavigator;
+>>>>>>> hoon
