@@ -20,8 +20,6 @@ const TabNavigator = () => {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === '급여') {
             iconName = focused ? 'wallet' : 'wallet-outline';
-          } else if (route.name === '커뮤니티') {
-            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
           } else if (route.name === '프로필') {
             iconName = focused ? 'person' : 'person-outline';
           }
@@ -35,7 +33,6 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="홈" component={HomeScreen} />
       <Tab.Screen name="급여" component={PayScreen} />
-      <Tab.Screen name="커뮤니티" component={CommunityScreen} />
       <Tab.Screen name="프로필" component={ProfileScreen} />
     </Tab.Navigator>
   );

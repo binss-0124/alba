@@ -12,7 +12,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.profileHeader}>
         <Text style={styles.profileName}>김민준</Text>
-        <Text style={styles.profileEmail}>test@example.com</Text>
+        <Text style={styles.profileEmail}>employer@example.com</Text>
       </View>
       <View style={styles.menuContainer}>
         <TouchableOpacity style={styles.menuButton}>

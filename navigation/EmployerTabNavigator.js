@@ -22,7 +22,7 @@ const EmployerTabNavigator = () => {
             iconName = focused ? 'analytics' : 'analytics-outline';
           } else if (route.name === '캘린더') {
             iconName = focused ? 'calendar' : 'calendar-outline';
-          } else if (route.name === '프로필') {
+          } else if (route.name === '사장님') {
             iconName = focused ? 'person' : 'person-outline';
           }
 

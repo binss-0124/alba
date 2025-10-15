@@ -54,8 +54,25 @@ const HomeScreen = () => {
           '2025-09-27': {marked: true, selectedColor: PRIMARY_COLOR},
         }}
       />
+      <Text style={styles.calendarTitle}>사장님 달력</Text>
+      <Calendar
+        theme={{
+          selectedDayBackgroundColor: PRIMARY_COLOR,
+          arrowColor: PRIMARY_COLOR,
+          dotColor: PRIMARY_COLOR,
+          todayTextColor: PRIMARY_COLOR,
+          'stylesheet.calendar.header': {
+            week: {
+              marginTop: 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              backgroundColor: BACKGROUND_COLOR,
+            },
+          },
+        }}
+      />
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>9월 통계</Text>
+        <Text style={styles.cardTitle}>10월 통계</Text>
         <View style={styles.statsRow}>
           <Text style={styles.statsLabel}>총 근무 시간</Text>
           <Text style={styles.statsValue}>40시간</Text>
